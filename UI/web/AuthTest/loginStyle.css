@@ -1,0 +1,69 @@
+/* Future Dumb Ideas Login CSS */
+/* 8-15-2015 */
+
+body
+{
+    font-family: sans-serif;
+    background-color: #FFFFFF;
+}
+
+#login
+{
+    /* position first */
+    position: absolute;
+    width: 150px;
+    height: 155px;
+    left: 50%;
+    top: 50%;
+    
+    /* margin isn't centered */
+    margin-left: -110px;
+    margin-top: -75px;
+    outline: none;
+}
+
+#login input[type="text"],
+#login input[type="password"]
+{
+    width: 100%;
+    height: 40px;
+    positon: relative;
+    
+    font-size: 20px;
+    color: #000000;
+    
+    outline: none;
+    border-top: 2px;
+    border-left: 2px;
+    border-right: 2px;
+    border-color: #000000;
+    
+    padding-left: 20px;
+    padding-right: 20px;
+    
+    border-radius: 0px;
+    background-color: #FFFFFF;
+}
+
+
+#login input[type="submit"]
+{
+    width: 100%;
+    height: 50px;
+    positon: relative;
+    
+    color: #000000;
+    font-size: 18px;
+    
+    outline: none;
+    border: 0px;
+    border-color: #000000;
+    background-color: #FFFFFF;
+    
+    cursor: pointer;
+}
+
+#login input[type="submit"]:hover
+{
+    background-color: #d3d3d3;
+}
