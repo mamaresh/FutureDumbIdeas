@@ -7,15 +7,14 @@
         <meta charset="utf-8">
         <title>Login</title>
         <link rel="stylesheet" type="text/css" href="loginStyle.css" />
+        <script src="helper.js"></script>
     </head>
     
     <body>
-        <form id="login" method="post">
+        <form id="login" action="http://localhost:8080/webapp/admin/check" method="post">
             <input type="text" name="username" placeholder="Username">
             <input type="password" name="password" placeholder="Password">
-            <!--  Add js to post later?  -->
-            <!--  prevent password in URL  -->
-            <input type="submit" value="Log In">
+            <input type="submit" value="Log In" onClick="javascript:document.login.submit()">
         </form>
     </body>
     
