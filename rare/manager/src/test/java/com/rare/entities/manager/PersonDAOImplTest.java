@@ -4,12 +4,14 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.test.context.ContextConfiguration;
 
 import com.rare.commons.test.constants.DatabaseConstants;
 import com.rare.entities.entity.Location;
 import com.rare.entities.entity.Person;
 import com.rare.entities.entity.SocialNetworking;
 
+@ContextConfiguration(locations = { "classpath:src/test/resources/META-INF/persistence.xml" })
 public class PersonDAOImplTest {
 
 	PersonDAOImpl personDAOImpl;

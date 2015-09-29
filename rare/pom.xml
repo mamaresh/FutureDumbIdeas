@@ -24,6 +24,8 @@
 		<mysql.version>5.1.36</mysql.version>
 		<slf4j.version>1.7.12</slf4j.version>
 		<kundera.version>3.0</kundera.version>
+		<spring.test.version>2.5</spring.test.version>
+		<easymock.version>3.4</easymock.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -78,12 +80,7 @@
 				<version>${javax.servlet.version}</version>
 				<scope>provided</scope>
 			</dependency>
-			<!-- Eclipselink dependency -->
-			<dependency>
-				<groupId>org.eclipse.persistence</groupId>
-				<artifactId>eclipselink</artifactId>
-				<version>${eclipselink.version}</version>
-			</dependency>
+			<!-- Test dependencies -->
 			<!-- Junit dependency -->
 			<dependency>
 				<groupId>junit</groupId>
@@ -91,11 +88,18 @@
 				<version>${junit.version}</version>
 				<scope>test</scope>
 			</dependency>
-			<!-- MySQL dependency -->
+			<!-- Spring test dependency -->
 			<dependency>
-				<groupId>mysql</groupId>
-				<artifactId>mysql-connector-java</artifactId>
-				<version>${mysql.version}</version>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${spring.test.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<!-- Easymock dependency -->
+			<dependency>
+				<groupId>org.easymock</groupId>
+				<artifactId>easymock</artifactId>
+				<version>${easymock.version}</version>
 			</dependency>
 			<!-- Slf4J dependency -->
 			<dependency>

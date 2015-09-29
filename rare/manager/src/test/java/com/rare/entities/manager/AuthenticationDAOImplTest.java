@@ -3,11 +3,13 @@ package com.rare.entities.manager;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.test.context.ContextConfiguration;
 
 import com.rare.commons.exception.DatabaseException;
 import com.rare.commons.test.constants.DatabaseConstants;
 import com.rare.entities.entity.Authentication;
 
+@ContextConfiguration(locations = { "classpath:src/test/resources/META-INF/persistence.xml" })
 public class AuthenticationDAOImplTest {
 
 	AuthenticationDAOImpl authenticationDAOImpl;
