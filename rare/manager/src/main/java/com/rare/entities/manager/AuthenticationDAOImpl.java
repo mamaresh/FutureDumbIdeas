@@ -28,13 +28,13 @@ public class AuthenticationDAOImpl extends AbstractEntityManager {
 		LOG.debug("In #AuthenticationDAOImpl #addAuthentication #end");
 	}
 
-	public Authentication getAuthentication(String userName)
+	public Authentication getAuthentication(String id)
 			throws DatabaseException {
 		LOG.debug("In #AuthenticationDAOImpl #getAuthentication #start");
 		Authentication authentication = null;
 		try {
 			em = getEntityManager();
-			authentication = em.find(Authentication.class, userName);
+			authentication = em.find(Authentication.class, id);
 		} catch (Exception ex) {
 			LOG.error("Error in getting authentication from database ", ex);
 			throw new DatabaseException(ex);
@@ -51,7 +51,7 @@ public class AuthenticationDAOImpl extends AbstractEntityManager {
 		try {
 			em = getEntityManager();
 			Authentication authenticationToBeRemoved = em.find(
-					Authentication.class, authentication.getUserId());
+					Authentication.class, authentication.getId());
 			if (authenticationToBeRemoved != null) {
 				em.getTransaction().begin();
 				em.remove(authenticationToBeRemoved);
@@ -72,7 +72,7 @@ public class AuthenticationDAOImpl extends AbstractEntityManager {
 		try {
 			em = getEntityManager();
 			Authentication authenticationToBeDeleted = em.find(
-					Authentication.class, authentication.getUserId());
+					Authentication.class, authentication.getId());
 			if (authenticationToBeDeleted != null) {
 				em.getTransaction().begin();
 				em.merge(authentication);

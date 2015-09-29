@@ -17,5 +17,11 @@
 			<groupId>com.impetus.kundera.client</groupId>
 			<artifactId>kundera-cassandra</artifactId>
 		</dependency>
+		<!-- Commons sibling dependency -->
+		<dependency>
+			<groupId>${parent.groupId}</groupId>
+			<artifactId>commons</artifactId>
+			<version>${parent.version}</version>
+		</dependency>
 	</dependencies>
 </project>

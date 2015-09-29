@@ -1,47 +1,45 @@
 package com.rare.entities.manager;
 
-import java.sql.Timestamp;
-import java.util.Calendar;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.rare.commons.exception.DatabaseException;
+import com.rare.commons.test.constants.DatabaseConstants;
 import com.rare.entities.entity.Authentication;
-import com.rare.entities.manager.AuthenticationDAOImpl;
 
 public class AuthenticationDAOImplTest {
 
 	AuthenticationDAOImpl authenticationDAOImpl;
 	Authentication authentication, returnAuthentication;
-	String userName, password;
-	Timestamp lastUpdated;
+	String id;
 
 	@Before
 	public void setUp() {
 		authenticationDAOImpl = new AuthenticationDAOImpl();
 		authentication = new Authentication();
 
-		userName = "JunitUser";
-		password = "JunitPassword";
-		lastUpdated = new Timestamp(Calendar.getInstance().getTime().getTime());
+		id = DatabaseConstants.ID;
 
-		authentication.setUserId(userName);
-		authentication.setPassword(password);
-		authentication.setLastUpdated(lastUpdated);
+		authentication.setId(id);
+		authentication.setPassword(DatabaseConstants.PASSWORD);
+		authentication.setLastUpdated(DatabaseConstants.LASTUPDATED);
 	}
 
 	@Test
 	public void test() {
 		try {
 			authenticationDAOImpl.addAuthentication(authentication);
-			returnAuthentication = authenticationDAOImpl
-					.getAuthentication(userName);
+			returnAuthentication = authenticationDAOImpl.getAuthentication(id);
 			Assert.assertNotNull(returnAuthentication);
+			authentication.setPassword(DatabaseConstants.UPDATED_PASSWORD);
+			authentication.setLastUpdated(DatabaseConstants.LASTUPDATED);
+			authenticationDAOImpl.updateAuthentication(authentication);
+			returnAuthentication = authenticationDAOImpl.getAuthentication(id);
+			Assert.assertEquals(DatabaseConstants.UPDATED_PASSWORD,
+					returnAuthentication.getPassword());
 			authenticationDAOImpl.deleteAuthentication(authentication);
-			returnAuthentication = authenticationDAOImpl
-					.getAuthentication(userName);
+			returnAuthentication = authenticationDAOImpl.getAuthentication(id);
 			Assert.assertNull(returnAuthentication);
 		} catch (DatabaseException ex) {
 			Assert.fail(ex.getMessage());

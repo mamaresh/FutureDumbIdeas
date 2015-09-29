@@ -1,39 +1,45 @@
 package com.rare.entities.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+import com.rare.commons.constants.DatabaseConstants;
 
 /**
  * The persistent class for the authentication database table.
  * 
  */
 @Entity
-@Table(name="authentication")
-@NamedQuery(name="Authentication.findAll", query="SELECT a FROM Authentication a")
+@Table(name = DatabaseConstants.AUTHENTICATION_TABLE)
+@NamedQuery(name = DatabaseConstants.FIND_ALL_AUTHENTICATION, query = "SELECT a FROM Authentication a")
 public class Authentication implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(unique=true, nullable=false, length=50)
-	private String userId;
+	@Column(nullable = false, length = DatabaseConstants.LENGTH_OF_ID, name = DatabaseConstants.ID)
+	private String id;
 
-	@Column(nullable=false)
+	@Column(nullable = false, name = DatabaseConstants.LASTUPDATED)
 	private Timestamp lastUpdated;
 
-	@Column(nullable=false, length=50)
+	@Column(nullable = false, length = DatabaseConstants.LENGTH_OF_PASSWORD, name = DatabaseConstants.PASSWORD)
 	private String password;
 
 	public Authentication() {
 	}
 
-	public String getUserId() {
-		return this.userId;
+	public String getId() {
+		return id;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public Timestamp getLastUpdated() {
