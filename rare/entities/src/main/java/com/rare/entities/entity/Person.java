@@ -4,51 +4,52 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
+
 /**
  * The persistent class for the person database table.
  * 
  */
 @Entity
-@Table(name = "person")
-@NamedQuery(name = "Person.findAll", query = "SELECT p FROM Person p")
+@Table(name="person")
+@NamedQuery(name="Person.findAll", query="SELECT p FROM Person p")
 public class Person implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(unique = true, nullable = false, length = 100)
+	@Column(unique=true, nullable=false, length=100)
 	private String id;
 
-	@Column(nullable = false)
+	@Column(nullable=false)
 	private int age;
 
-	@Column(nullable = false, length = 100)
+	@Column(nullable=false, length=100)
 	private String firstName;
 
-	@Column(nullable = false, length = 100)
+	@Column(nullable=false, length=100)
 	private String gender;
 
-	@Column(nullable = false, length = 100)
+	@Column(nullable=false, length=100)
 	private String initials;
 
-	@Column(nullable = false, length = 100)
+	@Column(nullable=false, length=100)
 	private String lastName;
 
-	// bi-directional one-to-one association to Location
-	@OneToOne(cascade = { CascadeType.REMOVE, CascadeType.PERSIST })
-	@JoinColumn(name = "ID", nullable = false, insertable = false, updatable = false)
+	//bi-directional one-to-one association to Location
+	@OneToOne
+	@JoinColumn(name="ID", nullable=false, insertable=false, updatable=false)
 	private Location location;
 
-	// bi-directional one-to-one association to SocialNetworking
-	@OneToOne(cascade = { CascadeType.REMOVE, CascadeType.PERSIST })
-	@JoinColumn(name = "ID", nullable = false, insertable = false, updatable = false)
-	private SocialNetworking socialNetworking;
+	//bi-directional one-to-one association to Socialnetworking
+	@OneToOne
+	@JoinColumn(name="ID", nullable=false, insertable=false, updatable=false)
+	private Socialnetworking socialnetworking;
 
-	// bi-directional many-to-one association to Rating
-	@OneToMany(mappedBy = "person")
+	//bi-directional many-to-one association to Rating
+	@OneToMany(mappedBy="person")
 	private List<Rating> ratings;
 
-	// bi-directional many-to-one association to Service
-	@OneToMany(mappedBy = "person")
+	//bi-directional many-to-one association to Service
+	@OneToMany(mappedBy="person")
 	private List<Service> services;
 
 	public Person() {
@@ -110,12 +111,12 @@ public class Person implements Serializable {
 		this.location = location;
 	}
 
-	public SocialNetworking getSocialnetworking() {
-		return this.socialNetworking;
+	public Socialnetworking getSocialnetworking() {
+		return this.socialnetworking;
 	}
 
-	public void setSocialnetworking(SocialNetworking socialNetworking) {
-		this.socialNetworking = socialNetworking;
+	public void setSocialnetworking(Socialnetworking socialnetworking) {
+		this.socialnetworking = socialnetworking;
 	}
 
 	public List<Rating> getRatings() {

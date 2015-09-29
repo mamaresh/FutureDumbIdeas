@@ -43,6 +43,11 @@ public class Service implements Serializable {
 	@JoinColumn(name="personId", nullable=false)
 	private Person person;
 
+	//bi-directional many-to-one association to Servicecategory
+	@ManyToOne(cascade={CascadeType.ALL})
+	@JoinColumn(name="Id", referencedColumnName="ServiceId", nullable=false, insertable=false, updatable=false)
+	private Servicecategory servicecategory;
+
 	public Service() {
 	}
 
@@ -122,6 +127,14 @@ public class Service implements Serializable {
 
 	public void setPerson(Person person) {
 		this.person = person;
+	}
+
+	public Servicecategory getServicecategory() {
+		return this.servicecategory;
+	}
+
+	public void setServicecategory(Servicecategory servicecategory) {
+		this.servicecategory = servicecategory;
 	}
 
 }

@@ -31,7 +31,7 @@ public class Rating implements Serializable {
 	private int weightage;
 
 	//bi-directional one-to-one association to Metric
-	@OneToOne
+	@OneToOne(cascade={CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinColumn(name="Id", referencedColumnName="RatingId", nullable=false, insertable=false, updatable=false)
 	private Metric metric;
 

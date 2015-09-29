@@ -2,6 +2,7 @@ package com.rare.entities.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -24,8 +25,9 @@ public class Servicecategory implements Serializable {
 	@Column(nullable=false, length=1000)
 	private String name;
 
-	@Column(nullable=false, length=100)
-	private String serviceId;
+	//bi-directional many-to-one association to Service
+	@OneToMany(mappedBy="servicecategory")
+	private List<Service> services;
 
 	public Servicecategory() {
 	}
@@ -54,12 +56,26 @@ public class Servicecategory implements Serializable {
 		this.name = name;
 	}
 
-	public String getServiceId() {
-		return this.serviceId;
+	public List<Service> getServices() {
+		return this.services;
 	}
 
-	public void setServiceId(String serviceId) {
-		this.serviceId = serviceId;
+	public void setServices(List<Service> services) {
+		this.services = services;
+	}
+
+	public Service addService(Service service) {
+		getServices().add(service);
+		service.setServicecategory(this);
+
+		return service;
+	}
+
+	public Service removeService(Service service) {
+		getServices().remove(service);
+		service.setServicecategory(null);
+
+		return service;
 	}
 
 }

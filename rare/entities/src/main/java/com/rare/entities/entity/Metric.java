@@ -3,37 +3,35 @@ package com.rare.entities.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.rare.commons.constants.DatabaseConstants;
 
 /**
  * The persistent class for the metrics database table.
  * 
  */
 @Entity
-@Table(name="metrics")
-@NamedQuery(name="Metric.findAll", query="SELECT m FROM Metric m")
+@Table(name = DatabaseConstants.METRICS_TABLE)
+@NamedQuery(name = DatabaseConstants.FIND_ALL_METRICS, query = "SELECT m FROM Metric m")
 public class Metric implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(unique=true, nullable=false, length=100)
+	@Column(nullable = false, length = DatabaseConstants.LENGTH_OF_ID, name = DatabaseConstants.ID)
 	private String id;
 
-	@Column(nullable=false, length=100)
+	@Column(nullable = false, length = DatabaseConstants.LENGTH_OF_DESCRIPTION, name = DatabaseConstants.DESCRIPTION)
 	private String description;
 
-	@Column(nullable=false, length=100)
+	@Column(nullable = false, length = DatabaseConstants.LENGTH_OF_NAME, name = DatabaseConstants.NAME)
 	private String name;
 
-	@Column(nullable=false, length=100)
-	private String serviceCategoryId;
-
-	//bi-directional many-to-one association to Service
-	@ManyToOne
-	@JoinColumn(name="Id", referencedColumnName="metricId", nullable=false, insertable=false, updatable=false)
+	// bi-directional many-to-one association to Service
+	@ManyToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = DatabaseConstants.JOINCOLUMN_ID, referencedColumnName = DatabaseConstants.REFERENCED_COLUMN_METRICID, nullable = false, insertable = false, updatable = false)
 	private Service service;
 
-	//bi-directional one-to-one association to Rating
-	@OneToOne(mappedBy="metric")
+	// bi-directional one-to-one association to Rating
+	@OneToOne(mappedBy = DatabaseConstants.MAPPEDBY_METRIC)
 	private Rating rating;
 
 	public Metric() {
@@ -61,14 +59,6 @@ public class Metric implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getServiceCategoryId() {
-		return this.serviceCategoryId;
-	}
-
-	public void setServiceCategoryId(String serviceCategoryId) {
-		this.serviceCategoryId = serviceCategoryId;
 	}
 
 	public Service getService() {

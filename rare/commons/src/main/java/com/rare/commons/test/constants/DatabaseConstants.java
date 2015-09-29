@@ -11,6 +11,7 @@ public class DatabaseConstants {
 	public static final String COUNTRY = "India";
 	public static final String ID = UUID.randomUUID().toString();
 	public static final String LATITUDE = "43.57";
+	public static final String UPDATED_LATITUDE = "44.00";
 	public static final String LONGITUDE = "44.54";
 	public static final String STATE = "Karnataka";
 	public static final String ZIPCODE = "560097";
@@ -31,4 +32,8 @@ public class DatabaseConstants {
 	public static final String PASSWORD = "Anfield@777";
 	public static final String UPDATED_PASSWORD = "Anfield777";
 
+	public static final String METRIC_DESCRIPTION = "Quality of timeliness is measured here";
+	public static final String METRIC_NAME = "Timeliness";
+	public static final String UPDATED_METRIC_DESCRIPTION = "Timeliness quality";
+	
 }
