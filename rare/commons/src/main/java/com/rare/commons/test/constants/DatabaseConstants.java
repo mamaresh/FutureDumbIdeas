@@ -17,10 +17,11 @@ public class DatabaseConstants {
 	public static final String GOOGLEID = "pavan.rao333@gmail.com";
 	public static final String TWITTERID = "pavanraotk";
 	
-	public static final int AGE = 26;
+	public static final int AGE = 25;
 	public static final String FIRSTNAME = "Pavan";
 	public static final String GENDER = "Male";
 	public static final String INITIALS = "T K";
 	public static final String LASTNAME = "Rao";
+	public static final int UPDATED_AGE = 26;
 
 }

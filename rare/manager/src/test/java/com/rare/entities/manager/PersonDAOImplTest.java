@@ -25,7 +25,7 @@ public class PersonDAOImplTest {
 		person = new Person();
 		location = new Location();
 		socialNetworking = new SocialNetworking();
-		
+
 		ID = DatabaseConstants.ID;
 
 		location.setAddress(DatabaseConstants.ADDRESS);
@@ -62,14 +62,19 @@ public class PersonDAOImplTest {
 
 	@Test
 	public void test() {
-		try{
+		try {
 			personDAOImpl.addPerson(person);
 			returnPerson = personDAOImpl.getPersonById(ID);
 			Assert.assertNotNull(returnPerson);
+			person.setAge(DatabaseConstants.UPDATED_AGE);
+			personDAOImpl.updatePerson(person);
+			returnPerson = personDAOImpl.getPersonById(ID);
+			Assert.assertEquals(DatabaseConstants.UPDATED_AGE,
+					returnPerson.getAge());
 			personDAOImpl.deletePerson(person);
 			returnPerson = personDAOImpl.getPersonById(ID);
 			Assert.assertNull(returnPerson);
-		}catch(Exception ex){
+		} catch (Exception ex) {
 			Assert.fail(ex.getMessage());
 		}
 	}

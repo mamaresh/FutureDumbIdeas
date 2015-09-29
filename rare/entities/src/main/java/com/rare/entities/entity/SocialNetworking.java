@@ -28,7 +28,7 @@ public class SocialNetworking implements Serializable {
 	private String twitterId;
 
 	//bi-directional one-to-one association to Person
-	@OneToOne(mappedBy="socialnetworking")
+	@OneToOne(mappedBy="socialNetworking")
 	private Person person;
 
 	public SocialNetworking() {
