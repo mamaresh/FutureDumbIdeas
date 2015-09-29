@@ -51,7 +51,7 @@ public class PersonDAOImplTest {
 		person.setInitials(DatabaseConstants.INITIALS);
 		person.setLastName(DatabaseConstants.LASTNAME);
 		person.setLocation(location);
-		person.setSocialnetworking(socialNetworking);
+		person.setSocialNetworking(socialNetworking);
 	}
 
 	@After
