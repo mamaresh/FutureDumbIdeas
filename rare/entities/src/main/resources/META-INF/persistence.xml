@@ -3,9 +3,8 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
                       http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 	version="2.0">
-	<persistence-unit name="rare"
-		transaction-type="RESOURCE_LOCAL">
-		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+	<persistence-unit name="rare">
+		<provider>com.impetus.kundera.KunderaPersistence</provider>
 		<class>com.rare.entities.entity.Authentication</class>
 		<class>com.rare.entities.entity.Location</class>
 		<class>com.rare.entities.entity.Metric</class>
@@ -13,15 +12,17 @@
 		<class>com.rare.entities.entity.Rating</class>
 		<class>com.rare.entities.entity.Service</class>
 		<class>com.rare.entities.entity.Servicecategory</class>
-		<class>com.rare.entities.entity.Socialnetworking</class>
+		<class>com.rare.entities.entity.SocialNetworking</class>
 		<properties>
-			<!-- Configuring JDBC properties -->
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/rare" />
-			<property name="javax.persistence.jdbc.user" value="root" />
-			<property name="javax.persistence.jdbc.password" value="" />
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="eclipselink.ddl-generation" value="create-or-extend-tables" />
-			<property name="eclipselink.logging.level" value="INFO" />
+			<!-- Configuring Cassandra properties -->
+			<property name="kundera.nodes" value="localhost" />
+			<property name="kundera.port" value="9160" />
+			<property name="kundera.keyspace" value="RARE" />
+			<property name="kundera.dialect" value="cassandra" />
+			<property name="kundera.show.query" value="false" />
+			<property name="kundera.client.lookup.class"
+				value="com.impetus.client.cassandra.thrift.ThriftClientFactory" />
+			<property name="kundera.ddl.auto.prepare" value="create" />
 		</properties>
 	</persistence-unit>
 </persistence>

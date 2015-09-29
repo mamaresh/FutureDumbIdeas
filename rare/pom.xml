@@ -23,6 +23,7 @@
 		<junit.version>4.4</junit.version>
 		<mysql.version>5.1.36</mysql.version>
 		<slf4j.version>1.7.12</slf4j.version>
+		<kundera.version>3.0</kundera.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -101,6 +102,17 @@
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
 				<version>${slf4j.version}</version>
+			</dependency>
+			<!-- Kundera dependency -->
+			<dependency>
+				<groupId>com.impetus.kundera.core</groupId>
+				<artifactId>kundera-core</artifactId>
+				<version>${kundera.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.impetus.kundera.client</groupId>
+				<artifactId>kundera-cassandra</artifactId>
+				<version>${kundera.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

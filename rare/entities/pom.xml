@@ -8,15 +8,14 @@
 	</parent>
 	<artifactId>entities</artifactId>
 	<dependencies>
-		<!-- Eclipselink dependency -->
+		<!-- Kundera dependency -->
 		<dependency>
-			<groupId>org.eclipse.persistence</groupId>
-			<artifactId>eclipselink</artifactId>
+			<groupId>com.impetus.kundera.core</groupId>
+			<artifactId>kundera-core</artifactId>
 		</dependency>
-		<!-- MySQL dependency -->
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
+			<groupId>com.impetus.kundera.client</groupId>
+			<artifactId>kundera-cassandra</artifactId>
 		</dependency>
 	</dependencies>
 </project>

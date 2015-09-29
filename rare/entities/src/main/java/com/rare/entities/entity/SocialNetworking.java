@@ -10,8 +10,8 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="socialnetworking")
-@NamedQuery(name="Socialnetworking.findAll", query="SELECT s FROM Socialnetworking s")
-public class Socialnetworking implements Serializable {
+@NamedQuery(name="SocialNetworking.findAll", query="SELECT s FROM SocialNetworking s")
+public class SocialNetworking implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -31,7 +31,7 @@ public class Socialnetworking implements Serializable {
 	@OneToOne(mappedBy="socialnetworking")
 	private Person person;
 
-	public Socialnetworking() {
+	public SocialNetworking() {
 	}
 
 	public String getId() {

@@ -19,7 +19,6 @@ public class AuthenticationDAOImpl extends AbstractEntityManager {
 			em.getTransaction().begin();
 			em.persist(authentication);
 			em.getTransaction().commit();
-			em.getEntityManagerFactory().getCache().evictAll();
 		} catch (Exception ex) {
 			LOG.error("Error in adding authentication to database ", ex);
 			throw new DatabaseException(ex);
@@ -57,7 +56,6 @@ public class AuthenticationDAOImpl extends AbstractEntityManager {
 				em.getTransaction().begin();
 				em.remove(authenticationToBeRemoved);
 				em.getTransaction().commit();
-				em.getEntityManagerFactory().getCache().evictAll();
 			}
 		} catch (Exception ex) {
 			LOG.error("Error in deleting authentication from database ", ex);
@@ -79,7 +77,6 @@ public class AuthenticationDAOImpl extends AbstractEntityManager {
 				em.getTransaction().begin();
 				em.merge(authentication);
 				em.getTransaction().commit();
-				em.getEntityManagerFactory().getCache().evictAll();
 			}
 		} catch (Exception ex) {
 			LOG.error("Error in updating authentication from database ", ex);
