@@ -7,6 +7,13 @@
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>com.rare.entities.entity.Authentication</class>
+		<class>com.rare.entities.entity.Location</class>
+		<class>com.rare.entities.entity.Metric</class>
+		<class>com.rare.entities.entity.Person</class>
+		<class>com.rare.entities.entity.Rating</class>
+		<class>com.rare.entities.entity.Service</class>
+		<class>com.rare.entities.entity.Servicecategory</class>
+		<class>com.rare.entities.entity.Socialnetworking</class>
 		<properties>
 			<!-- Configuring JDBC properties -->
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/rare" />

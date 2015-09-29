@@ -15,17 +15,25 @@ import java.sql.Timestamp;
 public class Authentication implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@Column(unique=true, nullable=false, length=50)
+	private String userId;
+
 	@Column(nullable=false)
 	private Timestamp lastUpdated;
 
 	@Column(nullable=false, length=50)
 	private String password;
 
-	@Id
-	@Column(nullable=false, length=50)
-	private String userId;
-
 	public Authentication() {
+	}
+
+	public String getUserId() {
+		return this.userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public Timestamp getLastUpdated() {
@@ -42,14 +50,6 @@ public class Authentication implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getUserId() {
-		return this.userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
 	}
 
 }

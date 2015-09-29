@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.rare.commons.exception.DatabaseException;
 import com.rare.entities.entity.Authentication;
 import com.rare.entities.manager.AuthenticationDAOImpl;
 
@@ -33,14 +34,18 @@ public class AuthenticationDAOImplTest {
 
 	@Test
 	public void test() {
-		authenticationDAOImpl.addAuthentication(authentication);
-		returnAuthentication = authenticationDAOImpl
-				.getAuthentication(userName);
-		Assert.assertNotNull(returnAuthentication);
-		authenticationDAOImpl.deleteAuthentication(authentication);
-		returnAuthentication = authenticationDAOImpl
-				.getAuthentication(userName);
-		Assert.assertNull(returnAuthentication);
+		try {
+			authenticationDAOImpl.addAuthentication(authentication);
+			returnAuthentication = authenticationDAOImpl
+					.getAuthentication(userName);
+			Assert.assertNotNull(returnAuthentication);
+			authenticationDAOImpl.deleteAuthentication(authentication);
+			returnAuthentication = authenticationDAOImpl
+					.getAuthentication(userName);
+			Assert.assertNull(returnAuthentication);
+		} catch (DatabaseException ex) {
+			Assert.fail(ex.getMessage());
+		}
 	}
 
 }

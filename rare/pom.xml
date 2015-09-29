@@ -22,6 +22,7 @@
 		<eclipselink.version>2.6.0</eclipselink.version>
 		<junit.version>4.4</junit.version>
 		<mysql.version>5.1.36</mysql.version>
+		<slf4j.version>1.7.12</slf4j.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -94,6 +95,12 @@
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
 				<version>${mysql.version}</version>
+			</dependency>
+			<!-- Slf4J dependency -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

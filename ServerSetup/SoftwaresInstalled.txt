@@ -9,6 +9,10 @@ Login to: https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#
 Username: pavan.rao333@gmail.com
 Password: Anfield777
 
+The ppk file is added to git, use that while logging in through putty. 
+
+Thinking of using cassandra as our db than mysql, cassandra is awesome.
+
 1. Open JDK
 
 a. sudo apt-get update

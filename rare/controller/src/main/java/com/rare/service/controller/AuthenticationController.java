@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.rare.commons.exception.LogicException;
 import com.rare.commons.util.JSONParser;
 import com.rare.logic.UserHandler;
 
@@ -47,6 +48,10 @@ public class AuthenticationController {
 			responseString = "Error in json";
 			responseEntity = new ResponseEntity<String>(responseString,
 					HttpStatus.BAD_REQUEST);
+		} catch (LogicException e) {
+			responseString = "Error in server";
+			responseEntity = new ResponseEntity<String>(responseString,
+					HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return responseEntity;
 	}
