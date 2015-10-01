@@ -11,8 +11,29 @@
         http://www.springframework.org/schema/websocket/spring-websocket.xsd
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
-        
-     <bean id="AuthenticationDAO" class="com.rare.entities.manager.AuthenticationDAOImpl">
+
+	<bean id="AuthenticationDAOImpl" class="com.rare.entities.manager.AuthenticationDAOImpl">
+	</bean>
+
+	<bean id="LocationDAOImpl" class="com.rare.entities.manager.LocationDAOImpl">
+	</bean>
+
+	<bean id="MetricDAOImpl" class="com.rare.entities.manager.MetricDAOImpl">
+	</bean>
+
+	<bean id="PersonDAOImpl" class="com.rare.entities.manager.PersonDAOImpl">
+	</bean>
+
+	<bean id="RatingDAOImpl" class="com.rare.entities.manager.RatingDAOImpl">
+	</bean>
+
+	<bean id="ServiceCategoryDAOImpl" class="com.rare.entities.manager.ServiceCategoryDAOImpl">
+	</bean>
+
+	<bean id="ServiceDAOImpl" class="com.rare.entities.manager.ServiceDAOImpl">
+	</bean>
+
+	<bean id="SocialNetworkDAOImpl" class="com.rare.entities.manager.SocialNetworkDAOImpl">
 	</bean>
 
 </beans>

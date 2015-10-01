@@ -8,6 +8,35 @@
 	</parent>
 	<artifactId>logic</artifactId>
 	<dependencies>
+		<!-- Slf4J dependency -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<!-- Commons bean utils dependency -->
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+		</dependency>
+		<!-- Junit dependency -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- Easymock dependency -->
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymock</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- Common sibling dependency -->
+		<dependency>
+			<groupId>${parent.groupId}</groupId>
+			<artifactId>commons</artifactId>
+			<version>${parent.version}</version>
+		</dependency>
+		<!-- Manager sibling dependency -->
 		<dependency>
 			<groupId>${parent.groupId}</groupId>
 			<artifactId>manager</artifactId>

@@ -26,6 +26,7 @@
 		<kundera.version>3.0</kundera.version>
 		<spring.test.version>2.5</spring.test.version>
 		<easymock.version>3.4</easymock.version>
+		<beanutils.version>1.9.2</beanutils.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -100,6 +101,7 @@
 				<groupId>org.easymock</groupId>
 				<artifactId>easymock</artifactId>
 				<version>${easymock.version}</version>
+				<scope>test</scope>
 			</dependency>
 			<!-- Slf4J dependency -->
 			<dependency>
@@ -117,6 +119,12 @@
 				<groupId>com.impetus.kundera.client</groupId>
 				<artifactId>kundera-cassandra</artifactId>
 				<version>${kundera.version}</version>
+			</dependency>
+			<!-- Commons bean utils dependency -->
+			<dependency>
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils</artifactId>
+				<version>${beanutils.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

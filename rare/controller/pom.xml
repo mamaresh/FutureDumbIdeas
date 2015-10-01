@@ -26,6 +26,11 @@
 		</plugins>
 	</build>
 	<dependencies>
+		<!-- Slf4J dependency -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
 		<!-- Springframework dependency -->
 		<dependency>
 			<groupId>org.springframework</groupId>

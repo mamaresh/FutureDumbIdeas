@@ -18,4 +18,8 @@
 		<property name="userHandler" ref="UserHandler"></property>
 	</bean>
 
+	<bean id="PersonController" class="com.rare.service.controller.PersonController">
+		<property name="personHandler" ref="PersonHandler"></property>
+	</bean>
+
 </beans>

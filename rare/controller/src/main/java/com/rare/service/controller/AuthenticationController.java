@@ -12,45 +12,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.rare.commons.constants.ControllerConstants;
 import com.rare.commons.exception.LogicException;
 import com.rare.commons.util.JSONParser;
 import com.rare.logic.UserHandler;
 
 @RestController
-@RequestMapping(value = "/user")
+@RequestMapping(value = ControllerConstants.AUTHENTICATION_CONTROLLER_PATH)
 public class AuthenticationController {
 
 	@Autowired
 	UserHandler userHandler;
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ResponseEntity<String> checkLoginPossibleOrNot(
-			@RequestBody String userCredentialsJson) {
+	@RequestMapping(value = ControllerConstants.AUTHENTICATION_CONTROLLER_LOGIN_PATH, method = RequestMethod.POST)
+	public ResponseEntity<String> checkLoginPossibleOrNot(@RequestBody String userCredentialsJson) {
 		Map<String, Object> map;
-		String responseString = null;
 		ResponseEntity<String> responseEntity;
 		try {
 			map = JSONParser.parseJson(new JSONObject(userCredentialsJson));
-			String userName = (String) map.get("userName");
-			String password = (String) map.get("password");
-			boolean check = this.getUserHandler().checkCredentials(userName,
-					password);
+			String userName = (String) map.get(ControllerConstants.USERNAME);
+			String password = (String) map.get(ControllerConstants.PASSWORD);
+			boolean check = this.getUserHandler().checkCredentials(userName, password);
 			if (check) {
-				responseString = "Successfully logged in";
-				responseEntity = new ResponseEntity<String>(responseString,
-						HttpStatus.OK);
+				responseEntity = new ResponseEntity<String>(ControllerConstants.SUCCESSFULLY_LOGGED_IN, HttpStatus.OK);
 			} else {
-				responseString = "Login failed, user credentials wrong";
-				responseEntity = new ResponseEntity<String>(responseString,
+				responseEntity = new ResponseEntity<String>(ControllerConstants.WRONG_CREDENTIALS,
 						HttpStatus.UNAUTHORIZED);
 			}
 		} catch (JSONException e) {
-			responseString = "Error in json";
-			responseEntity = new ResponseEntity<String>(responseString,
-					HttpStatus.BAD_REQUEST);
+			responseEntity = new ResponseEntity<String>(ControllerConstants.ERROR_IN_INPUT, HttpStatus.BAD_REQUEST);
 		} catch (LogicException e) {
-			responseString = "Error in server";
-			responseEntity = new ResponseEntity<String>(responseString,
+			responseEntity = new ResponseEntity<String>(ControllerConstants.INTERNAL_SERVER_ERROR,
 					HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return responseEntity;

@@ -15,7 +15,11 @@
 	<import resource="manager-context.xml"></import>
 
 	<bean id="UserHandler" class="com.rare.logic.UserHandler">
-		<property name="authenticationDAOImpl" ref="AuthenticationDAO"></property>
+		<property name="authenticationDAOImpl" ref="AuthenticationDAOImpl"></property>
+	</bean>
+
+	<bean id="PersonHandler" class="com.rare.logic.PersonHandler">
+		<property name="personDAOImpl" ref="PersonDAOImpl"></property>
 	</bean>
 
 </beans>
