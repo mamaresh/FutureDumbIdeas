@@ -2,51 +2,53 @@ package com.rare.entities.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
 
+import com.rare.commons.constants.DatabaseConstants;
+
+import java.util.List;
 
 /**
  * The persistent class for the service database table.
  * 
  */
 @Entity
-@Table(name="service")
-@NamedQuery(name="Service.findAll", query="SELECT s FROM Service s")
+@Table(name = DatabaseConstants.SERVICE_TABLE)
+@NamedQuery(name = DatabaseConstants.FIND_ALL_SERVICES, query = "SELECT s FROM Service s")
 public class Service implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(unique=true, nullable=false, length=100)
+	@Column(nullable = false, length = DatabaseConstants.LENGTH_OF_ID, name = DatabaseConstants.ID)
 	private String id;
 
-	@Column(nullable=false, length=5000)
+	@Column(nullable = false, length = DatabaseConstants.LENGTH_OF_DESCRIPTION, name = DatabaseConstants.DESCRIPTION)
 	private String description;
 
-	@Column(nullable=false, length=100)
+	@Column(nullable = false, length = DatabaseConstants.LENGTH_OF_NAME, name = DatabaseConstants.NAME)
 	private String name;
 
-	@Column(nullable=false, length=13)
+	@Column(nullable = false, length = DatabaseConstants.LENGTH_OF_PHONE_NUMBER, name = DatabaseConstants.PHONE_NUMBER)
 	private String phoneNumber;
 
-	@Column(nullable=false, length=5000)
+	@Column(nullable = false, length = DatabaseConstants.LENGTH_OF_PROFILE_CONTENT, name = DatabaseConstants.PROFILE_CONTENT)
 	private String profileContent;
 
-	@Column(nullable=false, length=1000)
+	@Column(nullable = false, length = DatabaseConstants.LENGTH_OF_WEBSITE_URL, name = DatabaseConstants.WEBSITE_URL)
 	private String websiteUrl;
 
-	//bi-directional many-to-one association to Metric
-	@OneToMany(mappedBy="service")
+	// bi-directional many-to-one association to Metric
+	@OneToMany(mappedBy = DatabaseConstants.MAPPEDBY_SERVICE)
 	private List<Metric> metrics;
 
-	//bi-directional many-to-one association to Person
+	// bi-directional many-to-one association to Person
 	@ManyToOne
-	@JoinColumn(name="personId", nullable=false)
+	@JoinColumn(name = DatabaseConstants.JOINCOLUMN_PERSONID, nullable = false)
 	private Person person;
 
-	//bi-directional many-to-one association to Servicecategory
-	@ManyToOne(cascade={CascadeType.ALL})
-	@JoinColumn(name="Id", referencedColumnName="ServiceId", nullable=false, insertable=false, updatable=false)
-	private Servicecategory servicecategory;
+	// bi-directional many-to-one association to ServiceCategory
+	@ManyToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = DatabaseConstants.JOINCOLUMN_ID, referencedColumnName = DatabaseConstants.REFERENCE_COLUMN_SERVICEID, nullable = false, insertable = false, updatable = false)
+	private ServiceCategory serviceCategory;
 
 	public Service() {
 	}
@@ -129,12 +131,12 @@ public class Service implements Serializable {
 		this.person = person;
 	}
 
-	public Servicecategory getServicecategory() {
-		return this.servicecategory;
+	public ServiceCategory getServicecategory() {
+		return this.serviceCategory;
 	}
 
-	public void setServicecategory(Servicecategory servicecategory) {
-		this.servicecategory = servicecategory;
+	public void setServicecategory(ServiceCategory serviceCategory) {
+		this.serviceCategory = serviceCategory;
 	}
 
 }

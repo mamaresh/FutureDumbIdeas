@@ -19,6 +19,7 @@ public class DatabaseConstants {
 	public static final String FACEBOOKID = "pavanraotk";
 	public static final String GOOGLEID = "pavan.rao333@gmail.com";
 	public static final String TWITTERID = "pavanraotk";
+	public static final String UPDATED_FACEBOOK_ID = "www.facebook.com/pavanraotk";
 
 	public static final int AGE = 25;
 	public static final String FIRSTNAME = "Pavan";
@@ -35,11 +36,21 @@ public class DatabaseConstants {
 	public static final String METRIC_DESCRIPTION = "Quality of timeliness is measured here";
 	public static final String METRIC_NAME = "Timeliness";
 	public static final String UPDATED_METRIC_DESCRIPTION = "Timeliness quality";
+	public static final int WEIGHTAGE = 10;
 	
 	public static final String RATING_DESCRIPTION = "Rating for timeliness";
 	public static final String RATING_NAME = "Timeliness";
 	public static final float RATING_STARS = 4.5f;
 	public static final float UPDATED_RATING_STARS = 5.0f;
 	
+	public static final String SERVICE_DESCRIPTION = "Masala dosa service";
+	public static final String SERVICE_NAME = "Masala dosa by Savitha";
+	public static final String PHONE_NUMBER = "+919663370912";
+	public static final String UPDATED_PHONE_NUMBER = "+919663217447";
+	public static final String PROFILE_CONTENT = "Masala dosa service by Savitha";
+	public static final String WEBSITE_URL = "www.savithapremkumar.com/masaladosa";
 	
+	public static final String SERVICE_CATEGORY_DESCRIPTION = "Food services";
+	public static final String SERVICE_CATEGORY_NAME = "FoodService";
+	public static final String UPDATED_SERVICE_CATEGORY_DESCRIPTION = "Food services and soda services";
 }

@@ -2,34 +2,36 @@ package com.rare.entities.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
 
+import com.rare.commons.constants.DatabaseConstants;
+
+import java.util.List;
 
 /**
  * The persistent class for the servicecategory database table.
  * 
  */
 @Entity
-@Table(name="servicecategory")
-@NamedQuery(name="Servicecategory.findAll", query="SELECT s FROM Servicecategory s")
-public class Servicecategory implements Serializable {
+@Table(name = DatabaseConstants.SERVICECATEGORY_TABLE)
+@NamedQuery(name = DatabaseConstants.FIND_ALL_SERVICE_CATEGORIES, query = "SELECT s FROM ServiceCategory s")
+public class ServiceCategory implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(unique=true, nullable=false, length=100)
+	@Column(nullable = false, length = DatabaseConstants.LENGTH_OF_ID, name = DatabaseConstants.ID)
 	private String id;
 
-	@Column(nullable=false, length=5000)
+	@Column(nullable = false, length = DatabaseConstants.LENGTH_OF_DESCRIPTION, name = DatabaseConstants.DESCRIPTION)
 	private String description;
 
-	@Column(nullable=false, length=1000)
+	@Column(nullable = false, length = DatabaseConstants.LENGTH_OF_NAME, name = DatabaseConstants.NAME)
 	private String name;
 
-	//bi-directional many-to-one association to Service
-	@OneToMany(mappedBy="servicecategory")
+	// bi-directional many-to-one association to Service
+	@OneToMany(mappedBy = DatabaseConstants.MAPPEDBY_SERVICECATEGORY)
 	private List<Service> services;
 
-	public Servicecategory() {
+	public ServiceCategory() {
 	}
 
 	public String getId() {

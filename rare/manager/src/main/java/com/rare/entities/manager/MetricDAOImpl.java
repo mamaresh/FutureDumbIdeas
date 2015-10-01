@@ -76,6 +76,7 @@ public class MetricDAOImpl extends AbstractEntityManager {
 		} finally {
 			closeEntityManager();
 		}
+		LOG.debug("In #MetricDAOImpl #getMetricById #end");
 		return metric;
 	}
 

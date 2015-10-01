@@ -33,7 +33,7 @@ public class RatingDAOImpl extends AbstractEntityManager {
 			Rating ratingToBeDeleted = em.find(Rating.class, rating.getId());
 			if (ratingToBeDeleted != null) {
 				em.getTransaction().begin();
-				em.refresh(rating);
+				em.remove(rating);
 				em.getTransaction().commit();
 			}
 		} catch (Exception ex) {
@@ -76,6 +76,7 @@ public class RatingDAOImpl extends AbstractEntityManager {
 		} finally {
 			closeEntityManager();
 		}
+		LOG.debug("In #RatingDAOImpl #getRatingById #end");
 		return rating;
 	}
 

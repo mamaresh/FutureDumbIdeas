@@ -9,7 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import com.rare.commons.test.constants.DatabaseConstants;
 import com.rare.entities.entity.Location;
 import com.rare.entities.entity.Person;
-import com.rare.entities.entity.SocialNetworking;
+import com.rare.entities.entity.SocialNetwork;
 
 @ContextConfiguration(locations = { "classpath:src/test/resources/META-INF/persistence.xml" })
 public class PersonDAOImplTest {
@@ -17,7 +17,7 @@ public class PersonDAOImplTest {
 	PersonDAOImpl personDAOImpl;
 	Person person, returnPerson;
 	Location location;
-	SocialNetworking socialNetworking;
+	SocialNetwork socialNetwork;
 	String ID;
 
 	@Before
@@ -26,7 +26,7 @@ public class PersonDAOImplTest {
 
 		person = new Person();
 		location = new Location();
-		socialNetworking = new SocialNetworking();
+		socialNetwork = new SocialNetwork();
 
 		ID = DatabaseConstants.ID;
 
@@ -39,10 +39,10 @@ public class PersonDAOImplTest {
 		location.setState(DatabaseConstants.STATE);
 		location.setZipcode(DatabaseConstants.ZIPCODE);
 
-		socialNetworking.setFacebookId(DatabaseConstants.FACEBOOKID);
-		socialNetworking.setGoogleId(DatabaseConstants.GOOGLEID);
-		socialNetworking.setId(ID);
-		socialNetworking.setTwitterId(DatabaseConstants.TWITTERID);
+		socialNetwork.setFacebook(DatabaseConstants.FACEBOOKID);
+		socialNetwork.setGoogle(DatabaseConstants.GOOGLEID);
+		socialNetwork.setId(ID);
+		socialNetwork.setTwitter(DatabaseConstants.TWITTERID);
 
 		person.setAge(DatabaseConstants.AGE);
 		person.setFirstName(DatabaseConstants.FIRSTNAME);
@@ -51,7 +51,7 @@ public class PersonDAOImplTest {
 		person.setInitials(DatabaseConstants.INITIALS);
 		person.setLastName(DatabaseConstants.LASTNAME);
 		person.setLocation(location);
-		person.setSocialNetworking(socialNetworking);
+		person.setSocialNetworking(socialNetwork);
 	}
 
 	@After
@@ -59,7 +59,7 @@ public class PersonDAOImplTest {
 		personDAOImpl = null;
 		person = null;
 		location = null;
-		socialNetworking = null;
+		socialNetwork = null;
 	}
 
 	@Test

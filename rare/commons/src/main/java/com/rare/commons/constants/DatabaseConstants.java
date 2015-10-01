@@ -39,9 +39,35 @@ public class DatabaseConstants {
 	public static final int LENGTH_OF_DESCRIPTION= 5000;
 	public static final int LENGTH_OF_NAME = 100;
 	
-	public static final String RATING_TABLE = "RATING_TABLE";
+	public static final String RATING_TABLE = "RATING";
 	public static final String FIND_ALL_RATING = "Rating.findAll";
 	public static final String STARS = "STARS";
 	public static final String REFERENCE_COLUMN_RATINGID = "RatingId";
+	
+	public static final String SERVICE_TABLE = "SERVICE";
+	public static final String FIND_ALL_SERVICES = "Service.findAll";
+	public static final String PHONE_NUMBER = "PHONENUMBER";
+	public static final String PROFILE_CONTENT = "PROFILECONTENT";
+	public static final String WEBSITE_URL = "WEBSITEURL";
+	public static final String MAPPEDBY_SERVICE = "service";
+	public static final String JOINCOLUMN_PERSONID = "personId";
+	public static final String REFERENCE_COLUMN_SERVICEID = "ServiceId";
+	public static final int LENGTH_OF_PHONE_NUMBER = 13;
+	public static final int LENGTH_OF_PROFILE_CONTENT = 5000;
+	public static final int LENGTH_OF_WEBSITE_URL = 1000;
+	
+	public static final String SERVICECATEGORY_TABLE = "SERVICECATEGORY";
+	public static final String FIND_ALL_SERVICE_CATEGORIES = "ServiceCategory.findAll";
+	public static final String MAPPEDBY_SERVICECATEGORY = "serviceCategory";
+	
+	public static final String SOCIAL_NETWORK_TABLE = "SOCIALNETWORK";
+	public static final String FIND_ALL_SOCIAL_NETWORKS = "SocialNetwork.findAll";
+	public static final String FACEBOOK = "FACEBOOK";
+	public static final String GOOGLE = "GOOGLE";
+	public static final String TWITTER = "TWITTER";
+	public static final String MAPPEDBY_SOCIALNETWORK = "socialNetwork";
+	public static final int LENGTH_OF_FACEBOOK = 100;
+	public static final int LENGTH_OF_GOOGLE = 100;
+	public static final int LENGTH_OF_TWITTER = 100;
 	
 }

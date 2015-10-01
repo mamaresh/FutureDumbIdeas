@@ -77,6 +77,7 @@ public class PersonDAOImpl extends AbstractEntityManager {
 		} finally {
 			closeEntityManager();
 		}
+		LOG.debug("In #PersonDAOImpl #getPersonById #end");
 		return person;
 	}
 

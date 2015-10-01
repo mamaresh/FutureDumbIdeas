@@ -11,8 +11,8 @@
 		<class>com.rare.entities.entity.Person</class>
 		<class>com.rare.entities.entity.Rating</class>
 		<class>com.rare.entities.entity.Service</class>
-		<class>com.rare.entities.entity.Servicecategory</class>
-		<class>com.rare.entities.entity.SocialNetworking</class>
+		<class>com.rare.entities.entity.ServiceCategory</class>
+		<class>com.rare.entities.entity.SocialNetwork</class>
 		<properties>
 			<!-- Configuring Cassandra properties -->
 			<property name="kundera.nodes" value="localhost" />

@@ -42,7 +42,7 @@ public class Person implements Serializable {
 	//bi-directional one-to-one association to Socialnetworking
 	@OneToOne
 	@JoinColumn(name="ID", nullable=false, insertable=false, updatable=false)
-	private SocialNetworking socialNetworking;
+	private SocialNetwork socialNetwork;
 
 	//bi-directional many-to-one association to Rating
 	@OneToMany(mappedBy="person")
@@ -111,12 +111,12 @@ public class Person implements Serializable {
 		this.location = location;
 	}
 
-	public SocialNetworking getSocialNetworking() {
-		return this.socialNetworking;
+	public SocialNetwork getSocialNetworking() {
+		return this.socialNetwork;
 	}
 
-	public void setSocialNetworking(SocialNetworking socialNetworking) {
-		this.socialNetworking = socialNetworking;
+	public void setSocialNetworking(SocialNetwork socialNetwork) {
+		this.socialNetwork = socialNetwork;
 	}
 
 	public List<Rating> getRatings() {
