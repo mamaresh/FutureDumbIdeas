@@ -3,41 +3,39 @@ package com.rare.entities.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.rare.commons.constants.DatabaseConstants;
 
 /**
  * The persistent class for the rating database table.
  * 
  */
 @Entity
-@Table(name="rating")
-@NamedQuery(name="Rating.findAll", query="SELECT r FROM Rating r")
+@Table(name = DatabaseConstants.RATING_TABLE)
+@NamedQuery(name = DatabaseConstants.FIND_ALL_RATING, query = "SELECT r FROM Rating r")
 public class Rating implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(unique=true, nullable=false, length=100)
+	@Column(nullable = false, length = DatabaseConstants.LENGTH_OF_ID, name = DatabaseConstants.ID)
 	private String id;
 
-	@Column(nullable=false, length=1000)
+	@Column(nullable = false, length = DatabaseConstants.LENGTH_OF_DESCRIPTION, name = DatabaseConstants.DESCRIPTION)
 	private String description;
 
-	@Column(nullable=false, length=100)
-	private String metricId;
-
-	@Column(nullable=false)
+	@Column(nullable = false, name = DatabaseConstants.STARS)
 	private float stars;
+	
+	@Column(nullable = false, name = DatabaseConstants.NAME, length = DatabaseConstants.LENGTH_OF_NAME)
+	private String name;
 
-	@Column(nullable=false)
-	private int weightage;
-
-	//bi-directional one-to-one association to Metric
-	@OneToOne(cascade={CascadeType.PERSIST, CascadeType.REMOVE})
-	@JoinColumn(name="Id", referencedColumnName="RatingId", nullable=false, insertable=false, updatable=false)
+	// bi-directional one-to-one association to Metric
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@JoinColumn(name = DatabaseConstants.JOINCOLUMN_ID, referencedColumnName = DatabaseConstants.REFERENCE_COLUMN_RATINGID, nullable = false, insertable = false, updatable = false)
 	private Metric metric;
 
-	//bi-directional many-to-one association to Person
+	// bi-directional many-to-one association to Person
 	@ManyToOne
-	@JoinColumn(name="personId", nullable=false)
+	@JoinColumn(name = "personId", nullable = false)
 	private Person person;
 
 	public Rating() {
@@ -59,14 +57,6 @@ public class Rating implements Serializable {
 		this.description = description;
 	}
 
-	public String getMetricId() {
-		return this.metricId;
-	}
-
-	public void setMetricId(String metricId) {
-		this.metricId = metricId;
-	}
-
 	public float getStars() {
 		return this.stars;
 	}
@@ -75,12 +65,12 @@ public class Rating implements Serializable {
 		this.stars = stars;
 	}
 
-	public int getWeightage() {
-		return this.weightage;
+	public String getName() {
+		return name;
 	}
 
-	public void setWeightage(int weightage) {
-		this.weightage = weightage;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Metric getMetric() {

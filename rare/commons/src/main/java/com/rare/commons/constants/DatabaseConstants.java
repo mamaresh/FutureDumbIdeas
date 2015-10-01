@@ -35,6 +35,13 @@ public class DatabaseConstants {
 	public static final String JOINCOLUMN_ID = "Id";
 	public static final String REFERENCED_COLUMN_METRICID = "metricId";
 	public static final String MAPPEDBY_METRIC = "metric";
+	public static final String WEIGHTAGE = "WEIGHTAGE";
 	public static final int LENGTH_OF_DESCRIPTION= 5000;
 	public static final int LENGTH_OF_NAME = 100;
+	
+	public static final String RATING_TABLE = "RATING_TABLE";
+	public static final String FIND_ALL_RATING = "Rating.findAll";
+	public static final String STARS = "STARS";
+	public static final String REFERENCE_COLUMN_RATINGID = "RatingId";
+	
 }

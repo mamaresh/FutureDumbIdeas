@@ -24,6 +24,9 @@ public class Metric implements Serializable {
 
 	@Column(nullable = false, length = DatabaseConstants.LENGTH_OF_NAME, name = DatabaseConstants.NAME)
 	private String name;
+	
+	@Column(nullable = false, name = DatabaseConstants.WEIGHTAGE)
+	int weightage;
 
 	// bi-directional many-to-one association to Service
 	@ManyToOne(cascade = { CascadeType.ALL })
@@ -75,6 +78,14 @@ public class Metric implements Serializable {
 
 	public void setRating(Rating rating) {
 		this.rating = rating;
+	}
+
+	public int getWeightage() {
+		return weightage;
+	}
+
+	public void setWeightage(int weightage) {
+		this.weightage = weightage;
 	}
 
 }

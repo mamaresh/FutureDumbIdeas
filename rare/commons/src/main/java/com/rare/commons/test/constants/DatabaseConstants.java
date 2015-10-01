@@ -36,4 +36,10 @@ public class DatabaseConstants {
 	public static final String METRIC_NAME = "Timeliness";
 	public static final String UPDATED_METRIC_DESCRIPTION = "Timeliness quality";
 	
+	public static final String RATING_DESCRIPTION = "Rating for timeliness";
+	public static final String RATING_NAME = "Timeliness";
+	public static final float RATING_STARS = 4.5f;
+	public static final float UPDATED_RATING_STARS = 5.0f;
+	
+	
 }
