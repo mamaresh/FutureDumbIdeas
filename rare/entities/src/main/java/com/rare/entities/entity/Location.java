@@ -10,8 +10,8 @@ import com.rare.commons.constants.DatabaseConstants;
  * 
  */
 @Entity
-@Table(name = "location")
-@NamedQuery(name = "Location.findAll", query = "SELECT l FROM Location l")
+@Table(name = DatabaseConstants.LOCATION_TABLE)
+@NamedQuery(name = DatabaseConstants.FIND_ALL_LOCATION, query = "SELECT l FROM Location l")
 public class Location implements Serializable {
 	private static final long serialVersionUID = 1L;
 

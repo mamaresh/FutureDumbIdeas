@@ -10,6 +10,19 @@ public class DatabaseConstants {
 	public static final int LENGTH_OF_ID = 100;
 	public static final int LENGTH_OF_PASSWORD = 100;
 	
+	public static final String PERSON_TABLE = "PERSON";
+	public static final String FIND_ALL_PERSON = "Person.findAll";
+	public static final String AGE = "AGE";
+	public static final String FIRSTNAME = "FIRSTNAME";
+	public static final String GENDER = "GENDER";
+	public static final String INITIALS = "INITIALS";
+	public static final String LASTNAME = "LASTNAME";
+	public static final String MAPPEDBY_PERSON = "person";
+	public static final int LENGTH_OF_FIRSTNAME = 100;
+	public static final int LENGTH_OF_GENDER = 100;
+	public static final int LENGTH_OF_INITIALS = 100;
+	public static final int LENGTH_OF_LASTNAME = 100;
+	
 	public static final String LOCATION_TABLE = "LOCATION";
 	public static final String FIND_ALL_LOCATION = "Location.findAll";
 	public static final String ADDRESS = "ADDRESS";
@@ -32,7 +45,7 @@ public class DatabaseConstants {
 	public static final String FIND_ALL_METRICS = "Metrics.findAll";
 	public static final String DESCRIPTION = "DESCRIPTION";
 	public static final String NAME = "NAME";
-	public static final String JOINCOLUMN_ID = "Id";
+	public static final String JOINCOLUMN_ID = "id";
 	public static final String REFERENCED_COLUMN_METRICID = "metricId";
 	public static final String MAPPEDBY_METRIC = "metric";
 	public static final String WEIGHTAGE = "WEIGHTAGE";

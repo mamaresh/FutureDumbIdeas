@@ -2,54 +2,56 @@ package com.rare.entities.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
 
+import com.rare.commons.constants.DatabaseConstants;
+
+import java.util.List;
 
 /**
  * The persistent class for the person database table.
  * 
  */
 @Entity
-@Table(name="person")
-@NamedQuery(name="Person.findAll", query="SELECT p FROM Person p")
+@Table(name = DatabaseConstants.PERSON_TABLE)
+@NamedQuery(name = DatabaseConstants.FIND_ALL_PERSON, query = "SELECT p FROM Person p")
 public class Person implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(unique=true, nullable=false, length=100)
+	@Column(nullable = false, length = DatabaseConstants.LENGTH_OF_ID, name = DatabaseConstants.ID)
 	private String id;
 
-	@Column(nullable=false)
+	@Column(nullable = false, name = DatabaseConstants.AGE)
 	private int age;
 
-	@Column(nullable=false, length=100)
+	@Column(nullable = false, length = DatabaseConstants.LENGTH_OF_FIRSTNAME, name = DatabaseConstants.FIRSTNAME)
 	private String firstName;
 
-	@Column(nullable=false, length=100)
+	@Column(nullable = false, length = DatabaseConstants.LENGTH_OF_GENDER, name = DatabaseConstants.GENDER)
 	private String gender;
 
-	@Column(nullable=false, length=100)
+	@Column(nullable = false, length = DatabaseConstants.LENGTH_OF_INITIALS, name = DatabaseConstants.INITIALS)
 	private String initials;
 
-	@Column(nullable=false, length=100)
+	@Column(nullable = false, length = DatabaseConstants.LENGTH_OF_LASTNAME, name = DatabaseConstants.LASTNAME)
 	private String lastName;
 
-	//bi-directional one-to-one association to Location
+	// bi-directional one-to-one association to Location
 	@OneToOne
-	@JoinColumn(name="ID", nullable=false, insertable=false, updatable=false)
+	@JoinColumn(name = DatabaseConstants.JOINCOLUMN_ID, nullable = false, insertable = false, updatable = false)
 	private Location location;
 
-	//bi-directional one-to-one association to Socialnetworking
+	// bi-directional one-to-one association to Socialnetworking
 	@OneToOne
-	@JoinColumn(name="ID", nullable=false, insertable=false, updatable=false)
+	@JoinColumn(name = DatabaseConstants.JOINCOLUMN_ID, nullable = false, insertable = false, updatable = false)
 	private SocialNetwork socialNetwork;
 
-	//bi-directional many-to-one association to Rating
-	@OneToMany(mappedBy="person")
+	// bi-directional many-to-one association to Rating
+	@OneToMany(mappedBy = DatabaseConstants.MAPPEDBY_PERSON)
 	private List<Rating> ratings;
 
-	//bi-directional many-to-one association to Service
-	@OneToMany(mappedBy="person")
+	// bi-directional many-to-one association to Service
+	@OneToMany(mappedBy = DatabaseConstants.MAPPEDBY_PERSON)
 	private List<Service> services;
 
 	public Person() {
