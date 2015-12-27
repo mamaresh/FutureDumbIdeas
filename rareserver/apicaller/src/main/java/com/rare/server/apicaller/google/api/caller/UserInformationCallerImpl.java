@@ -9,10 +9,8 @@ import java.net.URL;
 
 import org.springframework.stereotype.Component;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.introspect.VisibilityChecker;
 import com.rare.server.apicaller.UserInformationCaller;
 import com.rare.server.apicaller.constants.Constants;
 import com.rare.server.apicaller.error.ApiCallerError;
