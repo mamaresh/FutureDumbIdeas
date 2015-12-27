@@ -9,7 +9,10 @@ import java.net.URL;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.introspect.VisibilityChecker;
 import com.rare.server.apicaller.UserInformationCaller;
 import com.rare.server.apicaller.constants.Constants;
 import com.rare.server.apicaller.error.ApiCallerError;
@@ -27,14 +30,19 @@ public class UserInformationCallerImpl implements UserInformationCaller {
 		URL url = generateUrl(input);
 		HttpURLConnection conn = createConnection(url);
 		BufferedReader br = getBufferedReader(conn);
-		conn.disconnect();
 		return generateUserInformationResult(br);
 	}
 
 	private UserInformationResult generateUserInformationResult(BufferedReader br) throws ApiCallerException {
 		ObjectMapper mapper = new ObjectMapper();
+		String result = "";
+		String line = null;
 		try {
-			return mapper.readValue(br.readLine(), UserInformationResult.class);
+			while ((line = br.readLine()) != null) {
+				result += line;
+			}
+			mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+			return mapper.readValue(result, UserInformationResult.class);
 		} catch (IOException e) {
 			throw new ApiCallerException(ApiCallerError.GOOGLE_API_IO_EXCEPTION, e);
 		}

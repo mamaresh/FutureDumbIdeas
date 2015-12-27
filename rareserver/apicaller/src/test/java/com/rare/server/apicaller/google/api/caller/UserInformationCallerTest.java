@@ -1,5 +1,8 @@
 package com.rare.server.apicaller.google.api.caller;
 
+import static org.junit.Assert.assertThat;
+import static org.hamcrest.core.IsEqual.equalTo;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.rare.server.apicaller.UserInformationCaller;
 import com.rare.server.apicaller.google.api.constants.ApiCallerTestConstants;
 import com.rare.server.apicaller.input.UserInformationInput;
+import com.rare.server.apicaller.result.UserInformationResult;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = ApiCallerTestConstants.APPLICATION_CONTEXT_PATH)
@@ -20,11 +24,18 @@ public class UserInformationCallerTest {
 	UserInformationCaller userInformationCaller;
 
 	UserInformationInput input;
+	UserInformationResult result;
 
 	@Before
 	public void setUp() {
 		input = new UserInformationInput();
 		input.setGoogleId(ApiCallerTestConstants.GOOGLE_ID);
+
+		result = new UserInformationResult();
+		result.setDisplayName(ApiCallerTestConstants.DISPLAY_NAME);
+		result.setGender(ApiCallerTestConstants.GENDER);
+		result.setUrl(ApiCallerTestConstants.GOOGLE_PLUS_URL);
+		result.setObjectType(ApiCallerTestConstants.OBJECT_TYPE);
 	}
 
 	@After
@@ -34,7 +45,7 @@ public class UserInformationCallerTest {
 
 	@Test
 	public void test() throws Exception {
-		this.getUserInformationCaller().callGoogleApiToGetPersonalInformation(input);
+		assertThat(this.getUserInformationCaller().callGoogleApiToGetPersonalInformation(input), equalTo(result));
 	}
 
 	public UserInformationCaller getUserInformationCaller() {

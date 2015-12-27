@@ -6,7 +6,7 @@ public class UserInformationResult {
 	
 	private String displayName;
 	
-	private String googlePlusUrl;
+	private String url;
 	
 	private String objectType;
 
@@ -26,12 +26,12 @@ public class UserInformationResult {
 		this.displayName = displayName;
 	}
 
-	public String getGooglePlusUrl() {
-		return googlePlusUrl;
+	public String getUrl() {
+		return url;
 	}
 
-	public void setGooglePlusUrl(String googlePlusUrl) {
-		this.googlePlusUrl = googlePlusUrl;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public String getObjectType() {
@@ -48,8 +48,8 @@ public class UserInformationResult {
 		int result = 1;
 		result = prime * result + ((displayName == null) ? 0 : displayName.hashCode());
 		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
-		result = prime * result + ((googlePlusUrl == null) ? 0 : googlePlusUrl.hashCode());
 		result = prime * result + ((objectType == null) ? 0 : objectType.hashCode());
+		result = prime * result + ((url == null) ? 0 : url.hashCode());
 		return result;
 	}
 
@@ -72,15 +72,15 @@ public class UserInformationResult {
 				return false;
 		} else if (!gender.equals(other.gender))
 			return false;
-		if (googlePlusUrl == null) {
-			if (other.googlePlusUrl != null)
-				return false;
-		} else if (!googlePlusUrl.equals(other.googlePlusUrl))
-			return false;
 		if (objectType == null) {
 			if (other.objectType != null)
 				return false;
 		} else if (!objectType.equals(other.objectType))
+			return false;
+		if (url == null) {
+			if (other.url != null)
+				return false;
+		} else if (!url.equals(other.url))
 			return false;
 		return true;
 	}
