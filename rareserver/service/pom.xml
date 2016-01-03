@@ -5,6 +5,6 @@
     <artifactId>rareserver</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>service</artifactId>
-  <name>service</name>
+  <artifactId>com.rare.server.service.input</artifactId>
+  <name>com.rare.server.service.input</name>
 </project>

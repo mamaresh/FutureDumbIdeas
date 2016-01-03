@@ -1,7 +1,7 @@
-package com.rare.server.apicaller.result;
+package com.rare.server.service.input;
 
-public class UserIndividualFriends {
-
+public class UserFriend {
+	
 	private String objectType;
 
 	private String id;

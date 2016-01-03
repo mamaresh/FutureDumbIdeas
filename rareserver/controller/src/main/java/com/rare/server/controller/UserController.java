@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rare.server.apicaller.UserInformationCaller;
 import com.rare.server.apicaller.exception.ApiCallerException;
 import com.rare.server.apicaller.input.UserInformationInput;
+import com.rare.server.apicaller.result.UserFriendResult;
 import com.rare.server.apicaller.result.UserInformationResult;
 import com.rare.server.controller.constants.Constants;
 import com.rare.server.controller.exception.ControllerException;
@@ -35,7 +36,8 @@ public class UserController extends BaseController {
 			throws ControllerException, ApiCallerException {
 		UserInformationResult result = this.getCaller()
 				.callGoogleApiToGetPersonalInformation(generateUserInformationInput(request));
-		if (result != null) {
+		UserFriendResult friendResult = this.getCaller().getFriendsInformation(generateUserInformationInput(request));
+		if ((result != null) && (friendResult != null)) {
 			return new ResponseEntity<UserRegisterResponse>(
 					new UserRegisterResponse("Successfully obtained user from google"), HttpStatus.OK);
 		} else {

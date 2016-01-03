@@ -13,6 +13,10 @@ public class UserRegisterRequest {
 	@NotBlank
 	private String googleId;
 
+	@NotNull
+	@NotBlank
+	private String accessToken;
+
 	private String facebookId;
 
 	public Long getMobileNumber() {
@@ -29,6 +33,14 @@ public class UserRegisterRequest {
 
 	public void setGoogleId(String googleId) {
 		this.googleId = googleId;
+	}
+	
+	public String getAccessToken() {
+		return accessToken;
+	}
+
+	public void setAccessToken(String accessToken) {
+		this.accessToken = accessToken;
 	}
 
 	public String getFacebookId() {
