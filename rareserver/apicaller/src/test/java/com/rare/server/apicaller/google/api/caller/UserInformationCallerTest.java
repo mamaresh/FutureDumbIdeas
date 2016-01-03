@@ -1,8 +1,5 @@
 package com.rare.server.apicaller.google.api.caller;
 
-import static org.junit.Assert.assertThat;
-import static org.hamcrest.core.IsEqual.equalTo;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -30,6 +27,7 @@ public class UserInformationCallerTest {
 	public void setUp() {
 		input = new UserInformationInput();
 		input.setGoogleId(ApiCallerTestConstants.GOOGLE_ID);
+		input.setAccessToken("ya29.XgKCSKbXu_LXYBnIjBgXiqXNeR-Z2ErWb9jUHLAVzgtJVbvKJqTMFfRZ1SKQNJqeIqQpIDw");
 
 		result = new UserInformationResult();
 		result.setDisplayName(ApiCallerTestConstants.DISPLAY_NAME);
@@ -45,7 +43,12 @@ public class UserInformationCallerTest {
 
 	@Test
 	public void test() throws Exception {
-		assertThat(this.getUserInformationCaller().callGoogleApiToGetPersonalInformation(input), equalTo(result));
+		this.getUserInformationCaller().callGoogleApiToGetPersonalInformation(input);
+	}
+
+	@Test
+	public void testGetFriendsInformation() throws Exception {
+		this.getUserInformationCaller().getFriendsInformation(input);
 	}
 
 	public UserInformationCaller getUserInformationCaller() {

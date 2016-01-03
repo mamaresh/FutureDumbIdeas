@@ -16,6 +16,7 @@ import com.rare.server.apicaller.constants.Constants;
 import com.rare.server.apicaller.error.ApiCallerError;
 import com.rare.server.apicaller.exception.ApiCallerException;
 import com.rare.server.apicaller.input.UserInformationInput;
+import com.rare.server.apicaller.result.UserFriendResult;
 import com.rare.server.apicaller.result.UserInformationResult;
 import com.rare.server.apicaller.urls.GoogleApiUrls;
 
@@ -25,13 +26,31 @@ public class UserInformationCallerImpl implements UserInformationCaller {
 	@Override
 	public UserInformationResult callGoogleApiToGetPersonalInformation(UserInformationInput input)
 			throws ApiCallerException {
-		URL url = generateUrl(input);
+		URL url = generateUrlToGetPersonalInformation(input);
 		HttpURLConnection conn = createConnection(url);
 		BufferedReader br = getBufferedReader(conn);
-		return generateUserInformationResult(br);
+		return generateUserPersonalInformationResult(br);
 	}
 
-	private UserInformationResult generateUserInformationResult(BufferedReader br) throws ApiCallerException {
+	@Override
+	public UserFriendResult getFriendsInformation(UserInformationInput input) throws ApiCallerException {
+		URL url = generateUrlToGetFriendsInformation(input);
+		HttpURLConnection conn = createConnection(url);
+		BufferedReader br = getBufferedReader(conn);
+		return getUserFriendResult(br);
+	}
+
+	private URL generateUrlToGetFriendsInformation(UserInformationInput input) throws ApiCallerException {
+		try {
+			return new URL(GoogleApiUrls.GOOGLE_USER_INFO_URL + input.getGoogleId()
+					+ GoogleApiUrls.GOOGLE_PEOPLE_VISIBLE + input.getAccessToken());
+		} catch (MalformedURLException e) {
+			throw new ApiCallerException(ApiCallerError.GOOGLE_API_URL_ERROR, e);
+		}
+
+	}
+
+	private UserInformationResult generateUserPersonalInformationResult(BufferedReader br) throws ApiCallerException {
 		ObjectMapper mapper = new ObjectMapper();
 		String result = "";
 		String line = null;
@@ -41,6 +60,21 @@ public class UserInformationCallerImpl implements UserInformationCaller {
 			}
 			mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 			return mapper.readValue(result, UserInformationResult.class);
+		} catch (IOException e) {
+			throw new ApiCallerException(ApiCallerError.GOOGLE_API_IO_EXCEPTION, e);
+		}
+	}
+
+	private UserFriendResult getUserFriendResult(BufferedReader br) throws ApiCallerException {
+		ObjectMapper mapper = new ObjectMapper();
+		String result = "";
+		String line = null;
+		try {
+			while ((line = br.readLine()) != null) {
+				result += line;
+			}
+			mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+			return mapper.readValue(result, UserFriendResult.class);
 		} catch (IOException e) {
 			throw new ApiCallerException(ApiCallerError.GOOGLE_API_IO_EXCEPTION, e);
 		}
@@ -69,7 +103,7 @@ public class UserInformationCallerImpl implements UserInformationCaller {
 		}
 	}
 
-	private URL generateUrl(UserInformationInput input) throws ApiCallerException {
+	private URL generateUrlToGetPersonalInformation(UserInformationInput input) throws ApiCallerException {
 		try {
 			return new URL(GoogleApiUrls.GOOGLE_USER_INFO_URL + input.getGoogleId()
 					+ GoogleApiUrls.GOOGLE_USER_INFO_URL_API_KEY);
