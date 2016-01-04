@@ -1,20 +1,22 @@
-package com.rare.server.service.input;
+package com.rare.server.persistence.input;
 
 import java.util.List;
 
-public class UserRegistration {
-	
+public class UserRegistrationDaoInput {
+
 	private String gender;
-	
+
 	private String displayName;
-	
+
 	private String url;
-	
+
 	private String objectType;
-	
+
 	private Integer totalItems;
-	
-	private List<UserFriend> userFriends;
+
+	private String title;
+
+	private List<UserFriendDaoInput> userFriendDaoInputs;
 
 	public String getGender() {
 		return gender;
@@ -56,12 +58,20 @@ public class UserRegistration {
 		this.totalItems = totalItems;
 	}
 
-	public List<UserFriend> getUserFriends() {
-		return userFriends;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setUserFriends(List<UserFriend> userFriends) {
-		this.userFriends = userFriends;
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	
+
+	public List<UserFriendDaoInput> getUserFriends() {
+		return userFriendDaoInputs;
+	}
+
+	public void setUserFriends(List<UserFriendDaoInput> userFriendDaoInputs) {
+		this.userFriendDaoInputs = userFriendDaoInputs;
+	}
+
 }

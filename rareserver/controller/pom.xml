@@ -36,7 +36,7 @@
 		<!-- Cassandra test -->
 		<dependency>
 			<groupId>org.cassandraunit</groupId>
-			<artifactId>cassandra-unit</artifactId>
+			<artifactId>cassandra-unit-spring</artifactId>
 		</dependency>
 		<!-- Junit test -->
 		<dependency>

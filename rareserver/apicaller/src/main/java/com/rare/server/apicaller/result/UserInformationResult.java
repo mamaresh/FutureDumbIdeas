@@ -9,6 +9,8 @@ public class UserInformationResult {
 	private String url;
 	
 	private String objectType;
+	
+	private String googleId;
 
 	public String getGender() {
 		return gender;
@@ -42,12 +44,21 @@ public class UserInformationResult {
 		this.objectType = objectType;
 	}
 
+	public String getGoogleId() {
+		return googleId;
+	}
+
+	public void setGoogleId(String googleId) {
+		this.googleId = googleId;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((displayName == null) ? 0 : displayName.hashCode());
 		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
+		result = prime * result + ((googleId == null) ? 0 : googleId.hashCode());
 		result = prime * result + ((objectType == null) ? 0 : objectType.hashCode());
 		result = prime * result + ((url == null) ? 0 : url.hashCode());
 		return result;
@@ -72,6 +83,11 @@ public class UserInformationResult {
 				return false;
 		} else if (!gender.equals(other.gender))
 			return false;
+		if (googleId == null) {
+			if (other.googleId != null)
+				return false;
+		} else if (!googleId.equals(other.googleId))
+			return false;
 		if (objectType == null) {
 			if (other.objectType != null)
 				return false;
@@ -84,5 +100,4 @@ public class UserInformationResult {
 			return false;
 		return true;
 	}
-
 }

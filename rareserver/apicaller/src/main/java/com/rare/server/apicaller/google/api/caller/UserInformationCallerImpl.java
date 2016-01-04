@@ -29,7 +29,9 @@ public class UserInformationCallerImpl implements UserInformationCaller {
 		URL url = generateUrlToGetPersonalInformation(input);
 		HttpURLConnection conn = createConnection(url);
 		BufferedReader br = getBufferedReader(conn);
-		return generateUserPersonalInformationResult(br);
+		UserInformationResult result = generateUserPersonalInformationResult(br);
+		result.setGoogleId(input.getGoogleId());
+		return result;
 	}
 
 	@Override

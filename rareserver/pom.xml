@@ -46,7 +46,7 @@
 	</modules>
 	<properties>
 		<jackson.version>2.6.4</jackson.version>
-		<cassandra.version>3.0.0-beta1</cassandra.version>
+		<cassandra.version>2.1.9</cassandra.version>
 		<spring.version>4.2.4.RELEASE</spring.version>
 		<spring.boot.version>1.3.1.RELEASE</spring.boot.version>
 		<cassandra.unit.version>2.2.2.1</cassandra.unit.version>
@@ -83,6 +83,11 @@
 				<artifactId>cassandra-driver-mapping</artifactId>
 				<version>${cassandra.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>com.datastax.cassandra</groupId>
+				<artifactId>cassandra-driver-core</artifactId>
+				<version>${cassandra.version}</version>
+			</dependency>
 			<!-- Spring libraries -->
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -113,7 +118,7 @@
 			<!-- Cassandra test -->
 			<dependency>
 				<groupId>org.cassandraunit</groupId>
-				<artifactId>cassandra-unit</artifactId>
+				<artifactId>cassandra-unit-spring</artifactId>
 				<version>${cassandra.unit.version}</version>
 			</dependency>
 			<!-- Junit test -->

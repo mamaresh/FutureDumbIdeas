@@ -24,6 +24,7 @@ import com.rare.server.controller.error.ControllerError;
 import com.rare.server.controller.error.Error;
 import com.rare.server.controller.exception.ControllerException;
 import com.rare.server.controller.response.ErrorResponse;
+import com.rare.server.service.exception.ServiceException;
 
 public abstract class BaseController {
 
@@ -148,6 +149,14 @@ public abstract class BaseController {
 	@ResponseBody
 	@ExceptionHandler(ApiCallerException.class)
 	public ResponseEntity<ErrorResponse> handleApiCallerException(ApiCallerException ex) {
+		LOG.debug(ex.getClass().getName() + " caught", ex);
+		return new ResponseEntity<ErrorResponse>(new ErrorResponse(ControllerError.ERROR_IN_API_CALLER),
+				HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	@ResponseBody
+	@ExceptionHandler(ServiceException.class)
+	public ResponseEntity<ErrorResponse> handleServiceException(ServiceException ex) {
 		LOG.debug(ex.getClass().getName() + " caught", ex);
 		return new ResponseEntity<ErrorResponse>(new ErrorResponse(ControllerError.ERROR_IN_API_CALLER),
 				HttpStatus.INTERNAL_SERVER_ERROR);

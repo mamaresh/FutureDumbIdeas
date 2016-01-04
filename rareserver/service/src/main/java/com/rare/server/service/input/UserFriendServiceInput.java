@@ -1,6 +1,6 @@
 package com.rare.server.service.input;
 
-public class UserFriend {
+public class UserFriendServiceInput {
 	
 	private String objectType;
 
