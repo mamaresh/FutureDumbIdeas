@@ -1,6 +1,6 @@
-CREATE KEYSPACE "rare" WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'}  AND durable_writes = true;
+CREATE KEYSPACE "rare_server" WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'}  AND durable_writes = true;
 
-CREATE TABLE "rare"."user" (
+CREATE TABLE "rare_server"."google_user" (
 	google_id text,
 	friend_google_id text,
 	gender text static,
