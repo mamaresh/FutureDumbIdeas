@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.cassandraunit.spring.CassandraDataSet;
-import org.cassandraunit.spring.CassandraUnitTestExecutionListener;
+import org.cassandraunit.spring.CassandraUnitDependencyInjectionTestExecutionListener;
 import org.cassandraunit.spring.EmbeddedCassandra;
 import org.junit.After;
 import org.junit.Before;
@@ -28,9 +28,8 @@ import com.rare.server.persistence.input.UserFriendDaoInput;
 import com.rare.server.persistence.input.UserRegistrationDaoInput;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@TestExecutionListeners({
-        CassandraUnitTestExecutionListener.class,
-        DependencyInjectionTestExecutionListener.class })
+@TestExecutionListeners({ CassandraUnitDependencyInjectionTestExecutionListener.class,
+		DependencyInjectionTestExecutionListener.class })
 @CassandraDataSet(value = { Constants.USER_CQL })
 @EmbeddedCassandra
 @ContextConfiguration(locations = Constants.APPLICATION_CONTEXT_PATH)
@@ -85,12 +84,20 @@ public class UserDaoImplTest {
 
 	@Test
 	public void test() throws Exception {
-		userDao.insertUser(userRegistrationDaoInput);
-		assertThat(userDao.getUser(Constants.GOOGLE_ID, Constants.FRIEND_GOOGLE_ID), equalTo(user));
-		assertThat(userDao.getUserForGivenGoogleId(Constants.GOOGLE_ID), notNullValue());
-		userDao.removeUser(Constants.GOOGLE_ID);
-		assertThat(userDao.getUser(Constants.GOOGLE_ID, Constants.FRIEND_GOOGLE_ID), nullValue());
+		this.getUserDao().insertUser(userRegistrationDaoInput);
+		assertThat(this.getUserDao().getUser(Constants.GOOGLE_ID, Constants.FRIEND_GOOGLE_ID), equalTo(user));
+		assertThat(this.getUserDao().getUserForGivenGoogleId(Constants.GOOGLE_ID), notNullValue());
+		this.getUserDao().removeUser(Constants.GOOGLE_ID);
+		assertThat(this.getUserDao().getUser(Constants.GOOGLE_ID, Constants.FRIEND_GOOGLE_ID), nullValue());
 
+	}
+
+	public UserDao getUserDao() {
+		return userDao;
+	}
+
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
 	}
 
 }
