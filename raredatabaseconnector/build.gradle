@@ -1,0 +1,50 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+    mavenLocal()
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: "sonar-runner"
+apply plugin: "jacoco"
+apply plugin: "maven"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.5'
+}
+
+group = 'com.rare.server'
+version = '0.0.1'
+
+jar {
+	baseName = 'database.connector'
+}
+
+configurations {
+	runtime.exclude group: "org.slf4j", module: "slf4j-log4j12"
+}
+
+dependencies {
+    
+    compile 'commons-collections:commons-collections:2.1.+'
+    compile 'com.datastax.cassandra:cassandra-driver-core:2.1.8'
+    compile 'org.springframework:spring-core:4.+'
+    compile 'org.springframework:spring-context:4.+'
+    compile 'org.slf4j:slf4j-api:1.7.+'
+    
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.springframework:spring-test:4.+'
+    testCompile 'org.cassandraunit:cassandra-unit-spring:2.+'
+    testCompile 'org.hamcrest:hamcrest-all:1.3'
+}

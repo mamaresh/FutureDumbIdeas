@@ -1,0 +1,63 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+    mavenLocal()
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: "sonar-runner"
+apply plugin: "jacoco"
+apply plugin: 'maven'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+	compile 'commons-collections:commons-collections:3.2'
+	compile 'org.slf4j:slf4j-api:1.7.12'
+	compile 'ch.qos.logback:logback-classic:1.+'
+	compile 'com.datastax.cassandra:cassandra-driver-mapping:2.1.9'
+	compile 'com.rare.server:database.connector:0.0.1'
+
+    testCompile 'junit:junit:4.12'
+	testCompile "org.mockito:mockito-core:1.+"
+    testCompile 'org.springframework:spring-test:4.+'
+    testCompile 'org.cassandraunit:cassandra-unit-spring:2.+'
+}
+
+group   =  'com.rare.server'
+version =  '0.0.1'
+jar {
+    baseName = 'dao'
+}
+
+configurations {
+	runtime.exclude group: "org.slf4j", module: "slf4j-log4j12"
+}
+
+jacoco {
+    toolVersion = "0.7.1.201405082137"
+    reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.5'
+}
+
+test { finalizedBy jacocoTestReport }
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination "${buildDir}/jacocoHtml"
+    }
+}

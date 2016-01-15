@@ -1,0 +1,87 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+        mavenLocal()
+    }
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.5.RELEASE'
+    }
+}
+
+
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+apply plugin: "sonar-runner"
+apply plugin: "jacoco"
+apply plugin: "maven"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+    mavenLocal()
+}
+
+dependencies {
+
+	compile 'com.rare.server:dao:0.0.1'
+	compile 'com.rare.server:database.connector:0.0.1'
+	compile 'com.rare.server:service:0.0.1'
+	compile 'com.rare.server:apicaller:0.0.1'
+
+	compile 'org.springframework.boot:spring-boot-starter-actuator'
+	compile 'org.springframework.boot:spring-boot-starter-web'
+	compile 'commons-collections:commons-collections:3.2'
+	compile 'org.slf4j:slf4j-api:1.7.12'
+	compile 'ch.qos.logback:logback-classic:1.+'
+
+	compile 'org.apache.bval:bval-core:1.1.0'
+	compile 'org.springframework.data:spring-cql'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.4.+'
+    compile 'com.fasterxml.jackson.core:jackson-core:2.4.+'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.4.+'
+
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile 'junit:junit:4.12'
+
+    testCompile 'com.jayway.jsonpath:json-path:2.0.0'
+    testCompile 'com.jayway.jsonpath:json-path-assert:2.0.0'
+	testCompile 'org.cassandraunit:cassandra-unit-spring:2.+'
+	testCompile 'com.datastax.cassandra:cassandra-driver-core:2.1.7.1'
+	testCompile "org.mockito:mockito-core:1.+"
+
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.5'
+}
+
+group   =  'com.rakuten.point.aldebaran.pms.api'
+version =  '0.0.1'
+jar {
+    baseName = 'rareserver'
+}
+
+configurations {
+	runtime.exclude group: "org.slf4j", module: "slf4j-log4j12"
+}
+
+jacoco {
+    toolVersion = "0.7.1.201405082137"
+    reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
+test { finalizedBy jacocoTestReport }
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination "${buildDir}/jacocoHtml"
+    }
+}
